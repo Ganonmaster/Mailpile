@@ -299,7 +299,7 @@ class GPGKeySign(Command):
         try: signingkey = args.pop(0)
         except: signingkey = self.data.get("signingkey", None)
 
-        print keyid
+        print(keyid)
         if not keyid:
             return self._error("You must supply a keyid", None)
         rv = self._gnupg().sign_key(keyid, signingkey)

@@ -130,11 +130,11 @@ class PluginManager(object):
             for subdir in self._listdir(pdir):
                 pname = subdir.lower()
                 if pname in self.BUILTIN:
-                    print 'Cannot overwrite built-in plugin: %s' % pname
+                    print('Cannot overwrite built-in plugin: {}'.format(pname))
                     continue
                 if pname in self.DISCOVERED and not update:
                     # FIXME: this is lame
-                    # print 'Ignoring duplicate plugin: %s' % pname
+                    # print('Ignoring duplicate plugin: {}'.format(pname))
                     continue
                 plug_path = os.path.join(pdir, subdir)
                 manifest_filename = os.path.join(plug_path, 'manifest.json')
@@ -145,7 +145,7 @@ class PluginManager(object):
                         # FIXME: Need more sanity checks
                         self.DISCOVERED[pname] = (plug_path, manifest)
                 except (ValueError, AssertionError):
-                    print 'Bad manifest: %s' % manifest_filename
+                    print('Bad manifest: {}'.format(manifest_filename))
                 except (OSError, IOError):
                     pass
 
@@ -214,7 +214,7 @@ class PluginManager(object):
                 raise
             except:
                 traceback.print_exc(file=sys.stderr)
-                print 'FIXME: Loading %s failed, tell user!' % full_name
+                print('FIXME: Loading {} failed, tell user!'.format(full_name))
                 return
 
             spec = (full_name, manifest, dirname)
@@ -224,7 +224,7 @@ class PluginManager(object):
                 self._process_manifest_pass_two(*spec)
                 self._process_startup_hooks(*spec)
         else:
-            print 'What what what?? %s' % plugin_name
+            print('What what what?? {}'.format(plugin_name))
             return self
 
         if plugin_name not in self.LOADED:
@@ -263,7 +263,7 @@ class PluginManager(object):
                     if spec[0] not in failed:
                         process(*spec)
                 except Exception, e:
-                    print 'Failed to process manifest for %s: %s' % (spec[0], e)
+                    print('Failed to process manifest for {}: {}'.format(spec[0], e))
                     failed.append(spec[0])
                     traceback.print_exc()
         return self
@@ -400,7 +400,7 @@ class PluginManager(object):
                                             'html/' + tpath,
                                             filename)
                 else:
-                    print 'FIXME: Un-routable URL in manifest %s' % url
+                    print('FIXME: Un-routable URL in manifest {}'.format(url))
 
         # Register email content/crypto hooks
         s = self
@@ -481,8 +481,7 @@ class PluginManager(object):
             where = '->'.join(['%s:%s' % ('/'.join(stack[i][1].split('/')[-2:]),
                                           stack[i][2])
                               for i in reversed(range(2, len(stack)-1))])
-            print ('FIXME: Deprecated use of %s at %s (issue #547)'
-                   ) % (stack[1][3], where)
+            print('FIXME: Deprecated use of {} at {} (issue #547)'.format(stack[1][3], where))
 
     def _rhtf(self, kw_hash, term, function):
         if term in kw_hash:

@@ -202,7 +202,7 @@ class OAuth2(TestableWebbable):
         elif code:
             username, oname, csrf = state.split('/', 2)
             if not session.ui.valid_csrf_token(csrf):
-                print 'Invalid CSRF token: %s' % csrf
+                print('Invalid CSRF token: {}'.format(csrf))
                 raise AccessError('Invalid CSRF token')
 
             oname, ocfg = self.GetOAuthConfig(config, oname=oname)
