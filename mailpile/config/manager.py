@@ -1439,7 +1439,7 @@ class ConfigManager(ConfigDict):
             save_worker = config.save_worker
             config.save_worker = config.dumb_worker
         if config.sys.debug:
-            print('Waiting for {}'.format(save_worker)
+            print('Waiting for {}'.format(save_worker))
 
         from mailpile.postinglist import PLC_CACHE_FlushAndClean
         PLC_CACHE_FlushAndClean(config.background, keep=0)

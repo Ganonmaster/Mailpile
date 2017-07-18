@@ -121,7 +121,7 @@ class BaseIndex(MessageInfoConstants):
             except (IOError, OSError, KeyError, ValueError, IndexError):
                 # FIXME: If this msg_ptr is wrong, should we fix things?
                 if 'sources' in self.config.sys.debug:
-                    print('WARNING: {} not found'.format(msg_ptr)
+                    print('WARNING: {} not found'.format(msg_ptr))
 
             yield (msg_ptr, mbox, fd)
 
