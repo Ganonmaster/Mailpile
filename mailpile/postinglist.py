@@ -407,8 +407,8 @@ class OldPostingList(object):
                         fd.write('%s\t%s\n' % (sig, '\t'.join(mail_ids)))
                         return
             except IOError:
-                print(('RETRY: APPEND(compact=%s, %s, %s) %s'
-                       % (compact, fn_path, fd, sys.exc_info())))
+                print('RETRY: APPEND(compact=%s, %s, %s) %s'
+                       % (compact, fn_path, fd, sys.exc_info()))
                 time.sleep(0.2)
                 fd = None
 

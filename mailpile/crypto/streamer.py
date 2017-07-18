@@ -1162,8 +1162,8 @@ U2FsdGVkX19U8G7SKp8QygUusdHZThlrLcI04+jZ9U5kwfsw7bJJ2721dwgIpCUh
                     raise
             assert(fdcheck('Decrypting test, delimited=%s' % delim))
             t2 = time.time()
-            print((' => Elapsed: %.3fs + %.3fs = %.3fs (%.2f MB/s)'
-                   % (t1-t0, t2-t1, t2-t0, len(new_data)/(1024*1024*(t2-t0)))))
+            print(' => Elapsed: %.3fs + %.3fs = %.3fs (%.2f MB/s)'
+                   % (t1-t0, t2-t1, t2-t0, len(new_data)/(1024*1024*(t2-t0))))
 
         # Cleanup
         os.unlink(fn)
