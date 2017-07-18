@@ -121,7 +121,7 @@ class BaseIndex(MessageInfoConstants):
             except (IOError, OSError, KeyError, ValueError, IndexError):
                 # FIXME: If this msg_ptr is wrong, should we fix things?
                 if 'sources' in self.config.sys.debug:
-                    print 'WARNING: %s not found' % msg_ptr
+                    print('WARNING: {} not found'.format(msg_ptr)
 
             yield (msg_ptr, mbox, fd)
 
@@ -242,6 +242,6 @@ if __name__ == '__main__':
     import sys
     results = doctest.testmod(optionflags=doctest.ELLIPSIS,
                               extraglobs={})
-    print '%s' % (results, )
+    print('{}'.format(results))
     if results.failed:
         sys.exit(1)

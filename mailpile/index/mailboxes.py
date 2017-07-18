@@ -53,7 +53,7 @@ class MailboxIndex(BaseIndex):
                       if ptr in self.ptrset]
             result.reverse()
         else:
-            print 'FIXME! %s: search %s' % (self, terms)
+            print('FIXME! {}: search {}'.format(self, terms))
             result = []
         return SearchResultSet(self, terms, result, [])
 
@@ -63,6 +63,6 @@ if __name__ == '__main__':
     import sys
     results = doctest.testmod(optionflags=doctest.ELLIPSIS,
                               extraglobs={})
-    print '%s' % (results, )
+    print('{}'.format(results))
     if results.failed:
         sys.exit(1)
