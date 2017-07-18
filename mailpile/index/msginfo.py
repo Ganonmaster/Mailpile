@@ -35,6 +35,6 @@ if __name__ == '__main__':
     import sys
     results = doctest.testmod(optionflags=doctest.ELLIPSIS,
                               extraglobs={})
-    print '%s' % (results, )
+    print('%s' % (results, ))
     if results.failed:
         sys.exit(1)

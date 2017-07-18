@@ -120,7 +120,7 @@ def _parse_imap(reply):
             if isinstance(dline, (str, unicode)):
                 m = IMAP_TOKEN.match(dline)
             else:
-                print 'WARNING: Unparsed IMAP response data: %s' % (dline,)
+                print('WARNING: Unparsed IMAP response data: %s' % (dline,))
                 m = None
             if m:
                 token = m.group(0)
@@ -1164,7 +1164,7 @@ if __name__ == "__main__":
     results = doctest.testmod(optionflags=doctest.ELLIPSIS,
                               extraglobs={'session': session,
                                           'imap_config': config.sources.imap})
-    print '%s' % (results, )
+    print('%s' % (results, ))
     if results.failed:
         sys.exit(1)
 
@@ -1177,12 +1177,12 @@ if __name__ == "__main__":
         config.sources.imap.password = password
         imap = ImapMailSource(session, config.sources.imap)
         with imap.open(throw=IMAP_IOError) as conn:
-            print '%s' % (conn.list(), )
+            print('%s' % (conn.list(), ))
         mbx = SharedImapMailbox(config, imap, mailbox_path='INBOX')
-        print '%s' % list(mbx.iterkeys())
+        print('%s' % list(mbx.iterkeys()))
         for key in args:
             info, payload = mbx.get(key)
-            print '%s(%d bytes) = %s\n%s' % (mbx.get_msg_ptr('0000', key),
+            print('%s(%d bytes) = %s\n%s' % (mbx.get_msg_ptr('0000', key),
                                              mbx.get_msg_size(key),
-                                             info, payload)
+                                             info, payload))
 

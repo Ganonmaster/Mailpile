@@ -201,4 +201,4 @@ _plugins.register_commands(NicknymRefreshKeys)
 
 if __name__ == "__main__":
     n = Nicknym()
-    print n.get_key("varac@bitmask.net")
+    print(n.get_key("varac@bitmask.net"))

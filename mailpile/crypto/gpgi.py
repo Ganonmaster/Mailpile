@@ -361,7 +361,7 @@ class GnuPGRecordParser:
         pass  # FIXME
 
     def parse_unknown(self, line):
-        print "Unknown line with code '%s'" % (line,)
+        print("Unknown line with code '%s'" % (line,))
 
     def parse_none(line):
         pass
@@ -462,7 +462,7 @@ class StreamWriter(Thread):
             output.close()
         except:
             if not self.partial_write_ok:
-                print '%s: %s bytes left' % (self, total)
+                print('%s: %s bytes left' % (self, total))
                 traceback.print_exc()
         finally:
             self.state = 'done'
@@ -542,7 +542,7 @@ class GnuPG:
         if self.session:
             self.session.debug(msg.rstrip())
         else:
-            print '%s' % str(msg).rstrip()
+            print('%s' % str(msg).rstrip())
 
     def _debug_none(self, msg):
         pass
@@ -713,7 +713,7 @@ class GnuPG:
                 if thr.isAlive():
                     thr.join(timeout=15)
                     if thr.isAlive() and tries > 1:
-                        print 'WARNING: Failed to reap thread %s' % thr
+                        print('WARNING: Failed to reap thread %s' % thr)
 
     def parse_status(self, line, *args):
         self.debug('<<STATUS<< %s' % line)
@@ -1565,7 +1565,7 @@ class GnuPGExpectScript(threading.Thread):
         except TimedOut:
             timebox[0] = 0
             self.gnupg.debug('Timed out')
-            print 'Boo! %s not found in %s' % (exp, self.before)
+            print('Boo! %s not found in %s' % (exp, self.before))
             raise
 
     def run_script(self, proc, script):

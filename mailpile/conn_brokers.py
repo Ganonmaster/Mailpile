@@ -702,7 +702,7 @@ class MasterBroker(BaseConnectionBroker):
 def DisableUnbrokeredConnections():
     """Enforce the use of brokers EVERYWHERE!"""
     def CreateConnWarning(*args, **kwargs):
-        print '*** socket.create_connection used without a broker ***'
+        print('*** socket.create_connection used without a broker ***')
         traceback.print_stack()
         raise IOError('FIXME: Please use within a broker context')
     socket.create_connection = CreateConnWarning
@@ -983,6 +983,6 @@ else:
     import sys
     results = doctest.testmod(optionflags=doctest.ELLIPSIS,
                               extraglobs={})
-    print '%s' % (results, )
+    print('%s' % (results, ))
     if results.failed:
         sys.exit(1)

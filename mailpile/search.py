@@ -1319,7 +1319,7 @@ class MailIndex(BaseIndex):
                             incoming=incoming)
 
         if 'keywords' in self.config.sys.debug:
-            print 'KEYWORDS: %s' % keywords
+            print('KEYWORDS: %s' % keywords)
 
         for word in keywords:
             if (word.startswith('__') or
@@ -1611,8 +1611,8 @@ class MailIndex(BaseIndex):
                         return [int(h, 36) for h in gpl_hits]
                     except ValueError:
                         b36re = re.compile('^[a-zA-Z0-9]{1,8}$')
-                        print 'FIXME! BAD HITS: %s => %s' % (term, [
-                            h for h in gpl_hits if not b36re.match(h)])
+                        print('FIXME! BAD HITS: %s => %s' % (term, [
+                            h for h in gpl_hits if not b36re.match(h)]))
                         return [int(h, 36) for h in gpl_hits if b36re.match(h)]
 
         # Replace some GMail-compatible terms with what we really use
@@ -1886,6 +1886,6 @@ if __name__ == '__main__':
     import sys
     results = doctest.testmod(optionflags=doctest.ELLIPSIS,
                               extraglobs={})
-    print '%s' % (results, )
+    print('%s' % (results, ))
     if results.failed:
         sys.exit(1)

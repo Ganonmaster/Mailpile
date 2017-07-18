@@ -47,7 +47,7 @@ class CryptoInfo(dict):
 
     def _set_status(self, value):
         if value not in self.STATUSES:
-            print 'Bogus status for %s: %s' % (type(self), value)
+            print('Bogus status for %s: %s' % (type(self), value))
         assert(value in self.STATUSES)
         self._status = value
         self.mix_bubbles()
@@ -56,7 +56,7 @@ class CryptoInfo(dict):
         assert(item in self.KEYS)
         if item == "status":
             if value not in self.STATUSES:
-                print 'Bogus status for %s: %s' % (type(self), value)
+                print('Bogus status for %s: %s' % (type(self), value))
             assert(value in self.STATUSES)
             if self._status is None:  # Capture initial value
                 self._status = value

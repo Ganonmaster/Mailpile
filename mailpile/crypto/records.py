@@ -794,7 +794,7 @@ class EncryptedIntDict(EncryptedDict):
 if __name__ == '__main__':
     import random
 
-    print 'Creating EncryptedDict...'
+    print('Creating EncryptedDict...')
     eid = EncryptedIntDict('/tmp/test.aes', 'this is my secret key',
                            shard_size=25, overwrite=True)
     eid['hello'] = 99
@@ -811,8 +811,8 @@ if __name__ == '__main__':
     for size in (16, 50, 100, 200, 400, 800, 1600):
         er = EncryptedBlobStore('/tmp/tmp.aes', 'this is my secret key',
                                 max_bytes=size, overwrite=True)
-        print('Testing max_size=%d, real max=%d, lines=%d'
-              % (size, er.s0._MAX_DATA_SIZE, er.s0._RECORD_LINES))
+        print(('Testing max_size=%d, real max=%d, lines=%d'
+              % (size, er.s0._MAX_DATA_SIZE, er.s0._RECORD_LINES)))
         for l in reversed(range(0, 20)):
             er[l] = 'bjarni %s' % l
         for l in range(0, 20):
@@ -833,8 +833,8 @@ if __name__ == '__main__':
         else:
             er[l] = data[:(l % 1024)]
     done = time.time()
-    print ('10k record writes in %.2f (%.8f s/op)'
-           % (done - t0, (done - t0) / count))
+    print(('10k record writes in %.2f (%.8f s/op)'
+           % (done - t0, (done - t0) / count)))
     assert(len(er) == count)
 
     t0 = time.time()
@@ -845,11 +845,11 @@ if __name__ == '__main__':
             assert(er[l] == data[:(l % 1024)])
 
     done = time.time()
-    print ('10k record reads in %.2f (%.8f s/op)'
-           % (done - t0, (done - t0) / count))
+    print(('10k record reads in %.2f (%.8f s/op)'
+           % (done - t0, (done - t0) / count)))
     er.close()
 
-    print 'Creating EncryptedDict...'
+    print('Creating EncryptedDict...')
     ed = EncryptedDict('/tmp/test.aes', 'another secret key',
                        shard_size=(count * 2), min_shards=2, overwrite=True)
 
@@ -864,8 +864,8 @@ if __name__ == '__main__':
         else:
             ed[str(i)] = str(i)
     done = time.time()
-    print ('10k dict writes in %.2f (%.8f s/op)\n -- writes=%s lf=%s'
-           % (done - t0, (done - t0) / count, ed.writes, ed.load_factor))
+    print(('10k dict writes in %.2f (%.8f s/op)\n -- writes=%s lf=%s'
+           % (done - t0, (done - t0) / count, ed.writes, ed.load_factor)))
 
     # Add some non-existant entries to the list, shuffle
     items += (['bogus'] * 1000)
@@ -882,9 +882,9 @@ if __name__ == '__main__':
         except KeyError:
             pass
         except AssertionError:
-            print 'FAILED, GOT: %s => %s' % (i, ed.get(str(i)))
+            print('FAILED, GOT: %s => %s' % (i, ed.get(str(i))))
     done = time.time()
-    print ('10k dict reads in %.2f (%.8f s/op)\n -- reads=%s lf=%s'
-           % (done - t0, (done - t0) / count, ed.reads, ed.load_factor))
+    print(('10k dict reads in %.2f (%.8f s/op)\n -- reads=%s lf=%s'
+           % (done - t0, (done - t0) / count, ed.reads, ed.load_factor)))
 
 

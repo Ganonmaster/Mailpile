@@ -1624,6 +1624,6 @@ if __name__ == "__main__":
         rules=mailpile.config.defaults.CONFIG_RULES)
     results = doctest.testmod(optionflags=doctest.ELLIPSIS,
                               extraglobs={'cfg': cfg})
-    print '%s' % (results, )
+    print('%s' % (results, ))
     if results.failed:
         sys.exit(1)

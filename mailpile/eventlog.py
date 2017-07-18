@@ -323,7 +323,7 @@ class EventLog(object):
                     return False
             else:
                 # Unknown keywords match nothing...
-                print 'Unknown keyword: `%s=%s`' % (okw, rule)
+                print('Unknown keyword: `%s=%s`' % (okw, rule))
                 return False
         return True
 

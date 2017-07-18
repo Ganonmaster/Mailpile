@@ -775,6 +775,6 @@ if __name__ == "__main__":
     #        we don't have such tests. :-(
 
     results = doctest.testmod(optionflags=doctest.ELLIPSIS)
-    print '%s' % (results, )
+    print('%s' % (results, ))
     if results.failed:
         sys.exit(1)

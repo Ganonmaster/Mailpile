@@ -500,7 +500,7 @@ class SetupGetEmailSettings(TestableWebbable):
         elif sockettype.lower() == 'starttls':
             servertype += '_tls'
         else:
-            print 'FIXME/SOURCE: %s/%s' % (sockettype, servertype)
+            print('FIXME/SOURCE: %s/%s' % (sockettype, servertype))
         return servertype.lower()
 
     def _route_proto(self, outsrv):
@@ -511,7 +511,7 @@ class SetupGetEmailSettings(TestableWebbable):
         elif sockettype.lower() == 'starttls':
             servertype += 'tls'
         else:
-            print 'FIXME/ROUTE: %s/%s' % (sockettype, servertype)
+            print('FIXME/ROUTE: %s/%s' % (sockettype, servertype))
         return servertype.lower()
 
     def _rank(self, entry):

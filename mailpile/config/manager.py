@@ -1427,7 +1427,7 @@ class ConfigManager(ConfigDict):
             for w in worker_list:
                 if w and w.isAlive():
                     if config.sys.debug and wait:
-                        print 'Waiting for %s' % w
+                        print('Waiting for %s' % w)
                     w.quit(join=wait)
 
         # Flush the mailbox cache (queues save worker jobs)
@@ -1439,7 +1439,7 @@ class ConfigManager(ConfigDict):
             save_worker = config.save_worker
             config.save_worker = config.dumb_worker
         if config.sys.debug:
-            print 'Waiting for %s' % save_worker
+            print('Waiting for %s' % save_worker)
 
         from mailpile.postinglist import PLC_CACHE_FlushAndClean
         PLC_CACHE_FlushAndClean(config.background, keep=0)
@@ -1448,7 +1448,7 @@ class ConfigManager(ConfigDict):
 
         if config.sys.debug:
             # Hooray!
-            print 'All stopped!'
+            print('All stopped!')
 
 
 ##############################################################################
@@ -1526,6 +1526,6 @@ if __name__ == "__main__":
     results = doctest.testmod(optionflags=doctest.ELLIPSIS,
                               extraglobs={'cfg': cfg,
                                           'session': session})
-    print '%s' % (results, )
+    print('%s' % (results, ))
     if results.failed:
         sys.exit(1)

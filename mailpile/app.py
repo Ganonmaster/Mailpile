@@ -110,7 +110,7 @@ def Interact(session):
                 except UrlRedirectException, e:
                     session.error('Tried to redirect to: %s' % e.url)
     except EOFError:
-        print
+        print()
     finally:
         session.ui.unblock(force=True)
 
@@ -151,7 +151,7 @@ class InteractCommand(Command):
         splash = HelpSplash(session, 'help', []).run()
         motd = MessageOfTheDay(session, 'motd', ['--noupdate']).run()
         session.ui.display_result(splash)
-        print  # FIXME: This is a hack!
+        print()  # FIXME: This is a hack!
         session.ui.display_result(motd)
 
         Interact(session)

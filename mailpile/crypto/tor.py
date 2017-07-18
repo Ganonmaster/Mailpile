@@ -27,7 +27,7 @@ class Tor:
         self.original_getaddrinfo = None
 
     def start_tor(self):
-        print "Starting Tor"
+        print("Starting Tor")
         self.tor_process = stem.process.launch_tor_with_config(
             config = {
                 'SocksPort': str(SOCKS_PORT),
@@ -37,7 +37,7 @@ class Tor:
         )
 
     def _print_bootstrap_lines(self, line):
-        print '%s' % line
+        print('%s' % line)
         pass
 
     def _create_path(self, name):
@@ -47,7 +47,7 @@ class Tor:
             return name
 
     def stop_tor(self):
-        print "Stopping Tor"
+        print("Stopping Tor")
         self.tor_process.kill()
 
     def create_hidden_service(self, name, port, target):
@@ -69,7 +69,7 @@ class Tor:
 
     def start_proxying_through_tor(self):
         if self.original_socket:
-            print "We're (probably) already proxying through Tor"
+            print("We're (probably) already proxying through Tor")
             return
 
         self.original_socket = socket.socket
@@ -83,7 +83,7 @@ class Tor:
 
     def start_proxying_dns_through_tor(self):
         if self.original_getaddrinfo:
-            print "We're already proxying DNS throug Tor"
+            print("We're already proxying DNS throug Tor")
             return
 
         self.original_getaddrinfo = socket.getaddrinfo
@@ -103,21 +103,21 @@ if __name__ == "__main__":
     import urllib
     url = "http://wtfismyip.com/text"
 
-    print "BEWARE: This test script will probably leak your actual IP to wtfismyip.com."
-    print "        But you shouldn't have run a test script that could fail if you didn't want this to happen."
-    print "Your IP (not torified): %s" % (urllib.urlopen(url).read().strip())
+    print("BEWARE: This test script will probably leak your actual IP to wtfismyip.com.")
+    print("        But you shouldn't have run a test script that could fail if you didn't want this to happen.")
+    print("Your IP (not torified): %s" % (urllib.urlopen(url).read().strip()))
 
     t = Tor()
     t.start_tor()
     t.start_proxying_through_tor()
-    print "Your IP (torified): %s" % (urllib.urlopen(url).read().strip())
+    print("Your IP (torified): %s" % (urllib.urlopen(url).read().strip()))
     t.stop_proxying_through_tor()
 
-    print "Creating hidden service..."
+    print("Creating hidden service...")
 
     t.create_hidden_service("test", 80, "localhost:3000")
 
-    print t.get_hidden_service_conf()
+    print(t.get_hidden_service_conf())
 
     input("Hit enter to disable service")
 
